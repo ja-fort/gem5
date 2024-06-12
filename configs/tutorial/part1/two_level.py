@@ -19,9 +19,6 @@ system.mem_ranges = [AddrRange("512MB")]
 system.cpu = X86TimingSimpleCPU()
 
 # need to remove these lines
-# system.cpu.icache_port = system.membus.cpu_side_ports
-# system.cpu.dcache_port = system.membus.cpu_side_ports
-
 # Connect the CPU ports to the system bus
 # system.cpu.icache_port = system.l1_cache.cpu_side
 # system.cpu.icache_port = system.membus.cpu_side_ports
@@ -73,7 +70,7 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 
 binary = "tests/test-progs/hello/bin/x86/linux/hello"
 
-system.workload = SEWorkload.init_compatible(options.binary)
+system.workload = SEWorkload.init_compatible(binary)
 
 process = Process()
 process.cmd = [binary]
